@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UsuarioAdm {
+  id        Int       @id @default(autoincrement())
+  nome      String
+  email     String    @unique
+  password  String
+  afiliados Afiliado[]
+
+  @@map("UserAdm")
+}
+
+model Afiliado {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  valor       Float
+  link        String
+  createdAt   DateTime  @default(now())
+  usuarioAdm  UsuarioAdm? @relation(fields: [afiliado], references: [id])
+  afiliado    Int?      @map("usuarioAdm")
+
+  @@map("afiliados")
+}
+
+
