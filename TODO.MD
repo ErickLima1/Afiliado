@@ -11,5 +11,5 @@
 
 - [x] Configurar estrutura do projeto
 - [x] Criar esquema do banco de dados
-- [] Terminar de Documentar API
-- [] Terminar o Projeto
+- [x] Terminar de Documentar API
+- [x] Terminar o Projeto
