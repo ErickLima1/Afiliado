@@ -2,19 +2,21 @@
 import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 // import { UpdateUserDto } from './dto/update-user.dto';
 
-@ApiTags('user') //<- Fazer
+@ApiTags('Create-Users')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-
+  @IsPublic()
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
+  @ApiBearerAuth()
   @Get('/email')
   async findByEmail(@Query('email') email: string) {
     console.log(email);
