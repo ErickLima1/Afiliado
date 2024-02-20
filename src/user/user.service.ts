@@ -34,7 +34,7 @@ export class UserService {
   }
 
   findByEmail(email: string) {
-    console.log(email);
+    // console.log(email);
     return this.prisma.usuarioAdm.findUnique({
       where: { email },
     });
