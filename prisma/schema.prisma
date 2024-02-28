@@ -25,6 +25,7 @@ model Afiliado {
   nome        String
   valor       Float
   link        String
+  imagens     String[]
   createdAt   DateTime  @default(now())
   usuarioAdm  UsuarioAdm? @relation(fields: [afiliado], references: [id])
   afiliado    Int?      @map("usuarioAdm")
