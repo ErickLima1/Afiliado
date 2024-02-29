@@ -7,9 +7,10 @@ import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { AfiliadoModule } from './afiliado/afiliado.module';
+import { UploadModule } from './modules/upload/upload.module';
 
 @Module({
-  imports: [PrismaModule, UserModule, AuthModule, AfiliadoModule],
+  imports: [PrismaModule, UserModule, AuthModule, AfiliadoModule, UploadModule],
   controllers: [AppController],
   providers: [
     AppService,

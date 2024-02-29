@@ -7,11 +7,11 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class AfiliadoService {
   constructor(private readonly prisma: PrismaService) {}
-  //[x] Fazer parte do create
-  async create(createAfiliadoDto: CreateAfiliadoDto, usuarioAdmId: number) {
+
+  async create(afiliadoDto: CreateAfiliadoDto, usuarioAdmId: number) {
     const createdAfiliado = await this.prisma.afiliado.create({
       data: {
-        ...createAfiliadoDto,
+        ...afiliadoDto,
         usuarioAdm: {
           connect: {
             id: usuarioAdmId,
@@ -22,9 +22,8 @@ export class AfiliadoService {
     return createdAfiliado;
   }
 
-  //[x] Fazer parte de Update
   // eslint-disable-next-line prettier/prettier
-  async update(id: number, updateAfiliadoDto: UpdateAfiliadoDto, usuarioAdmId: number) {
+  async update(id: number, afiliadoDto: UpdateAfiliadoDto, usuarioAdmId: number) {
     const afiliado = await this.prisma.afiliado.findUnique({
       where: { id },
       select: { usuarioAdm: true },
@@ -39,13 +38,12 @@ export class AfiliadoService {
 
     const updatedAfiliado = await this.prisma.afiliado.update({
       where: { id },
-      data: updateAfiliadoDto,
+      data: afiliadoDto,
     });
 
     return updatedAfiliado;
   }
 
-  //[x] Fazer parte de Buscar Todos AfiliadosProduct
   async findAll(usuarioAdmId: number) {
     const allAfiliado = await this.prisma.afiliado.findMany({
       where: {
@@ -63,7 +61,6 @@ export class AfiliadoService {
   //   return `This action returns a #${id} afiliado`;
   // }
 
-  //[x] Fazer parte de remover
   async remove(id: number, usuarioAdmId: number) {
     const afiliado = await this.prisma.afiliado.findUnique({
       where: { id },
