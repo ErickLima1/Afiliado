@@ -3,5 +3,4 @@ export class Afiliado {
   nome: string;
   valor: number;
   link: string;
-  pessoa: string;
 }
