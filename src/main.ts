@@ -3,7 +3,9 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 // import * as cors from 'cors';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
