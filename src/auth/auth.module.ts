@@ -6,6 +6,8 @@ import { UserModule } from 'src/user/user.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './guards/strategies/jwt.strategy';
 import { LoginValidationMiddleware } from './middlewares/login-validation.middleware';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 @Module({
   imports: [

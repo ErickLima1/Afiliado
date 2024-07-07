@@ -28,7 +28,6 @@ export class AuthController {
   })
   login(@Request() req: AuthRequest) {
     // console.log(req.user);
-
     return this.AuthService.login(req.user);
   }
 }

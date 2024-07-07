@@ -14,7 +14,7 @@ export class AuthService {
   ) {}
 
   login(user: User): UserToken {
-    // Vai trasnformar o user em JWT
+    // Vai trasnformar o user  em JWT
     const payload: UserPayload = {
       sub: user.id,
       email: user.email,

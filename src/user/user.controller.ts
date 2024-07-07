@@ -7,11 +7,11 @@ import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 // import { UpdateUserDto } from './dto/update-user.dto';
 
 @ApiTags('Create-Users')
-@Controller('user')
+@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @IsPublic()
-  @Post()
+  @Post('user')
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
@@ -19,7 +19,7 @@ export class UserController {
   @ApiBearerAuth()
   @Get('/email')
   async findByEmail(@Query('email') email: string) {
-    console.log(email);
+    // console.log(email);
     return this.userService.findByEmail(email);
   }
 
