@@ -3,7 +3,7 @@ import { User } from '../entities/user.entity';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateUserDto extends User {
-  @IsEmail()
+  @IsEmail({}, { message: 'Email Inválido' })
   @IsNotEmpty({ message: 'Campo Em Branco' })
   @ApiProperty({
     example: 'email@email.com',
