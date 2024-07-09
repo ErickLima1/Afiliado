@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/user/entities/user.entity';
@@ -42,6 +42,8 @@ export class AuthService {
       }
     }
     //Se Chegou Aqui, Significa que não encontrou um user ou a Senha esta incorreta.
-    throw new Error('Email ou Senha Esta incorreta. Tente Novamente !');
+    throw new UnauthorizedException(
+      'Email ou Senha Esta incorreta. Tente Novamente !',
+    );
   }
 }
