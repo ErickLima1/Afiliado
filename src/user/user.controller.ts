@@ -22,7 +22,7 @@ export class UserController {
     // console.log(email);
     return this.userService.findByEmail(email);
   }
-
+  //Jõao Lemos Testando aqui no negocio
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
   //   return this.userService.update(+id, updateUserDto);
